@@ -1,0 +1,29 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+attackfile =ABopenfile("testfile.txt",True)
+
+# write invalid write
+attackfile.writeat("stars in spaceE",0)
+
+# make invalid text valid
+attackfile.writeat("S",0)
+
+try:
+    assert("SE" == attackfile.readat(None,0))
+except:
+    log("Attack1 successful!")
+
+attackfile.close()
+
+attackfile = ABopenfile("testfile.txt",False)
+
+try:
+    assert('Stars in spaceE' == attackfile.readat(None,0))
+    attackfile.close()
+
+except:
+ attackfile.close()
+ log("Valid Data write to a file is unsuccessfull!")

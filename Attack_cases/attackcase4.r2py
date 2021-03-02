@@ -1,0 +1,20 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+myfile.writeat("Stars in spacE", 0)
+
+try:
+    assert('SE' == myfile.readat(None,0))
+except:
+    log("invalid data write")
+
+try:
+    s = myfile.readat(None,8)
+except:
+    log("invalid read")
+
+#myfile.close()
+

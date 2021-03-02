@@ -1,0 +1,36 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+# Open File Function Call
+attackfile = ABopenfile("testfile.txt",True)
+
+assert('SE' == attackfile.readat(None,0))
+
+# Write valid data to the file
+attackfile.writeat("Stars in spaceE",0)
+
+try:
+    assert("SE" == attackfile.readat(None,0))
+except:
+    log("Attack1 Successful!")
+
+attackfile.close()
+
+attackfile = ABopenfile("testfile.txt",True)
+
+try:
+    assert('Stars in spaceE' == attackfile.readat(None,0))
+
+except:
+    log("Attack2 successfull!")
+    attackfile.close()
+
+try:
+    attackfile.writeat("SE",500)
+
+except:
+    log("Attack3 successfull!")
+    attackfile.close()
+

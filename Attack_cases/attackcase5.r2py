@@ -1,0 +1,51 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+
+def thread1():
+  try:
+    myfile1 = ABopenfile("file1", True)
+    myfile1.writeat("Stars in spacE", 0)
+    sleep(5)
+    assert('Stars in spacE' == myfile1.readat(None, 0))
+    myfile1.close()
+  except:
+    log("Attack in thread1 successful!")
+    myfile1.close()
+
+  try:
+    myfile2 = ABopenfile("file2", True)
+    myfile2.writeat("Stars in file2 in spacE", 0)
+    sleep(5)
+    assert('Stars in file2 in spacE' == myfile1.readat(None, 0))
+    myfile2.close()
+  except:
+    log("cannot creat another file, attack successful!")
+    myfile2.close()
+
+
+def thread2():
+    try:
+        myfile1 = ABopenfile("file1", True)
+        myfile1.writeat("Satellite in spacE", 0)
+        sleep(5)
+        assert('Satellite in spacE' == myfile1.readat(None, 0))
+        myfile1.close()
+    except:
+        log("Attack in thread2 successful!")
+        myfile1.close()
+
+    try:
+        myfile3 = ABopenfile("file3", True)
+        myfile3.writeat("Satellite in file3 in spacE", 0)
+        sleep(5)
+        assert('Satellite in file3 in spacE' == myfile1.readat(None, 0))
+        myfile3.close()
+    except:
+        log("cannot creat another file, attack successful!")
+        myfile3.close()
+
+createthread(thread1)
+createthread(thread2)
