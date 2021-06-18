@@ -22,7 +22,7 @@ o	One is a valid backup to read from, and the other is written to
 3.	When the app calls readat(), all reads must be performed on the valid backup.
 4.	When the app calls writeat(), all writes must be performed on the written to file.
 
-Three design paradigms are at work in this assignment: 
+Three design paradigms are at work in this project: 
 
 •	Accuracy: The security layer should only stop certain actions from being blocked. All other actions should be allowed. For example, if an app tries to read data from the backup file, this must succeed as per normal and must not be blocked. All situations that are not described above must match that of the underlying API.
 
