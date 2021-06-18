@@ -1,5 +1,3 @@
-# Reference-Monitor
-
 A reference monitor is an access control concept that refers to an abstract machine that mediates all access to objects by subjects. This can be used to allow, deny, or change the behavior of any set of calls. While not a perfect way of validating your reference monitor, it is useful to create test cases to see whether your security layer will work as expected.
 
 In this project I created a security layer which keeps a backup copy of a file in case it is written incorrectly. Here a valid file must start with the character 'S' and end with the character 'E'. If any other characters (including lowercase 's', 'e', etc.) are the first or last characters, then the file is considered invalid.
